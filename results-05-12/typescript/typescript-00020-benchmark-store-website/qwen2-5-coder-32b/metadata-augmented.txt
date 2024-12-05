@@ -1,0 +1,8 @@
+type INPUTS = {
+  url: string;
+  content: string;
+}
+
+type OUTPUT = {
+  tableData: Array<{ id: number; url: string; content: string }>;
+}

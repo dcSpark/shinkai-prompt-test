@@ -1,0 +1,11 @@
+type INPUTS = {
+  socialMedia: 'facebook' | 'twitter' | 'instagram' | 'reddit';
+  content: string;
+  title?: string; // Required for Reddit submissions
+  imageUrl?: string;
+};
+
+type OUTPUT = {
+  success: boolean;
+  message: string;
+};

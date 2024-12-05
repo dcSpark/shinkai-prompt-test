@@ -1,0 +1,8 @@
+type INPUTS = {
+  prompt: string;
+}
+
+type OUTPUT = {
+  success: boolean;
+  message?: string;
+}

@@ -1,0 +1,9 @@
+type INPUTS = {
+  platform: 'Facebook' | 'X' | 'Instagram' | 'Reddit';
+  content: string;
+};
+
+type OUTPUT = {
+  success: boolean;
+  message: string;
+};

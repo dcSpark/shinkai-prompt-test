@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00010-benchmark-summarize-website/qwen2-5-coder-32b/editor/shinkai_local_tools.py", line 155, in benchmark_store_website
+    response.raise_for_status()
+  File "/Users/edwardalvarado/Library/Python/3.9/lib/python/site-packages/requests/models.py", line 1024, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: http://localhost:9950/v2/tool_execution
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00010-benchmark-summarize-website/qwen2-5-coder-32b/editor/final-src-code.py", line 45, in <module>
+    result = asyncio.run(run(config, inputs))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00010-benchmark-summarize-website/qwen2-5-coder-32b/editor/final-src-code.py", line 27, in run
+    website_data = benchmark_store_website(inputs.url)
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00010-benchmark-summarize-website/qwen2-5-coder-32b/editor/shinkai_local_tools.py", line 167, in benchmark_store_website
+    raise Exception(error_message)
+Exception: ::NETWORK_ERROR:: Status: 500, Response: {'code': 500, 'error': 'Internal Server Error', 'message': "Error executing tool: Execution error: Execution error: ExecutionError: failed to run deno: error: The module's source code could not be parsed: Expected ',', got 'import' at file:///Users/edwardalvarado/shinkai-node/storage_debug_my_local_ai/tools_storage/tool-app-debug/code/-ykHe7NzPK9VJ093wVk3GL/index.ts:4:1\n\n  import json\n  ~~~~~~\n\nStack backtrace:\n   0: std::backtrace::Backtrace::capture\n   1: anyhow::error::<impl core::convert::From<E> for anyhow::Error>::from\n   2: deno_core::error::custom_error\n   3: <core::iter::adapters::flatten::FlatMap<I,U,F> as core::iter::traits::iterator::Iterator>::next\n   4: deno::graph_util::graph_valid\n   5: deno::module_loader::ModuleLoadPreparer::prepare_module_load::{{closure}}\n   6: <deno::module_loader::CliModuleLoader<TGraphContainer> as deno_core::modules::loaders::ModuleLoader>::prepare_load::{{closure}}\n   7: deno_core::modules::recursive_load::RecursiveModuleLoad::prepare::{{closure}}\n   8: deno::worker::CliMainWorker::execute_main_module::{{closure}}\n   9: deno::worker::CliMainWorker::run::{{closure}}\n  10: deno::tools::run::run_script::{{closure}}\n  11: deno::spawn_subcommand::{{closure}}\n  12: <deno_unsync::tokio::task::MaskFutureAsSend<F> as core::future::future::Future>::poll\n  13: tokio::runtime::task::raw::poll\n  14: deno::main\n  15: std::sys::backtrace::__rust_begin_short_backtrace\n  16: _main"}

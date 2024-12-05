@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00004-benchmark-pdf-store/qwen2-5-coder-32b/editor/final-src-code.py", line 16, in <module>
+    from pdfminer.high_level import extract_text
+ModuleNotFoundError: No module named 'pdfminer'

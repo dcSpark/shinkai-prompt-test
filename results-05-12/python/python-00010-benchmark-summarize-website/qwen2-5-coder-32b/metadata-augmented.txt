@@ -1,0 +1,7 @@
+type INPUT = { 
+  websiteId: string 
+}
+
+type OUTPUT = { 
+  summary: string 
+}

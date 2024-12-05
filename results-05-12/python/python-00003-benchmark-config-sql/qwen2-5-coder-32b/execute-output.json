@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00003-benchmark-config-sql/qwen2-5-coder-32b/editor/final-src-code.py", line 64, in <module>
+    result = asyncio.run(run(config, inputs))
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/Users/edwardalvarado/shinkai-prompt-test/results/python/python-00003-benchmark-config-sql/qwen2-5-coder-32b/editor/final-src-code.py", line 29, in run
+    "Authorization": f"Bearer {config.api_key}"
+AttributeError: 'CONFIG' object has no attribute 'api_key'

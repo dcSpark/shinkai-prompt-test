@@ -1,0 +1,5 @@
+Check file:///Users/edwardalvarado/shinkai-prompt-test/results/typescript/typescript-00014-benchmark-config-sql/qwen2-5-coder-32b/extracted-src-code.ts
+error: TS18046 [ERROR]: 'error' is of type 'unknown'.
+        return { success: false, message: `An error occurred: ${error.message}` };
+                                                                ~~~~~
+    at file:///Users/edwardalvarado/shinkai-prompt-test/results/typescript/typescript-00014-benchmark-config-sql/qwen2-5-coder-32b/extracted-src-code.ts:61:65

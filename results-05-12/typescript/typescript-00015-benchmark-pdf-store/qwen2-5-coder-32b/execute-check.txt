@@ -1,0 +1,3 @@
+Download https://registry.npmjs.org/@pdf-lib%2fpdf-lib
+error: Relative import path "globalthis/implementation" not prefixed with / or ./ or ../ and not in import map from "file:///Users/edwardalvarado/shinkai-prompt-test/results/typescript/typescript-00015-benchmark-pdf-store/qwen2-5-coder-32b/extracted-src-code.ts"
+    at file:///Users/edwardalvarado/shinkai-prompt-test/results/typescript/typescript-00015-benchmark-pdf-store/qwen2-5-coder-32b/extracted-src-code.ts:2:23

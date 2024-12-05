@@ -1,0 +1,2 @@
+type INPUTS = { url: string, filePath: string };
+type OUTPUT = { filePath: string };

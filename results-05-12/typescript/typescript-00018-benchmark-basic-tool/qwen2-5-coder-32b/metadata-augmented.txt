@@ -1,0 +1,2 @@
+type INPUTS = { template: string };
+type OUTPUT = { result: string };

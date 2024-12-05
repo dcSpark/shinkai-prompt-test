@@ -1,0 +1,8 @@
+type INPUT = { 
+  url: string; 
+  content: string; 
+}
+
+type OUTPUT = { 
+  rows: Array<{ id: number; url: string; content: string }>; 
+}

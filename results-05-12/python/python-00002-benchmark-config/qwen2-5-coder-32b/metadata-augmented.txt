@@ -1,0 +1,7 @@
+type INPUTS = {
+  prompt: string;
+}
+
+type OUTPUT = {
+  response: string;
+}
