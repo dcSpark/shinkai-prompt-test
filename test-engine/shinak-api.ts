@@ -20,7 +20,7 @@ async function delete_if_exists(test: TestData) {
       url,
       method: "delete",
       params: { tool_key: key },
-      headers: { Authorization: `Bearer debug` },
+      headers: { Authorization: `Bearer ${Deno.env.get("BEARER") ?? "debug"}` },
     });
   } catch { /* ignore */ }
 }
@@ -50,7 +50,7 @@ export async function save_tool(
       url: `${shinkaiApiUrl}/v2/set_playground_tool`,
       method: "post",
       data: body,
-      headers: { Authorization: `Bearer debug` },
+      headers: { Authorization: `Bearer ${Deno.env.get("BEARER") ?? "debug"}` },
     });
     return response.data.metadata.tool_router_key;
     // deno-lint-ignore no-explicit-any

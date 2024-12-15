@@ -3,6 +3,8 @@ import { Language, TestData } from "../types.ts";
 import { PromptTest } from "./PromptTest.ts";
 import { Paths } from "./../paths.ts";
 
+const SHINKAI_BEARER = Deno.env.get("SHINKAI_BEARER") ?? "debug";
+
 export function checkIfHeadersPresent(code: string) {
   return code.includes("SHINKAI_NODE_LOCATION") &&
     code.includes("BEARER")
@@ -20,7 +22,7 @@ export function appendAditionalCode(
 import os
 import json
 os.environ["SHINKAI_NODE_LOCATION"] = "http://localhost:9950"
-os.environ["BEARER"] = "debug"
+os.environ["BEARER"] = SHINKAI_BEARER
 os.environ["X_SHINKAI_TOOL_ID"] = "tool-id-debug"
 os.environ["X_SHINKAI_APP_ID"] = "tool-app-debug"
 os.environ["X_SHINKAI_LLM_PROVIDER"] = "${model.shinkaiName}"
@@ -32,7 +34,7 @@ os.environ["SHINKAI_ASSETS"] = "${Paths.editorAssetsPath(language, test, model)}
       `
 if __name__ == "__main__":
     import asyncio
-    
+
     config = CONFIG()
     inputs = INPUTS()
     ${
@@ -40,7 +42,7 @@ if __name__ == "__main__":
           `inputs.${k}=${JSON.stringify(test.inputs[k])}`
         ).join("\n    ")
       }
-    
+
     # Run the async function
     result = asyncio.run(run(config, inputs))
     print(json.dumps(result.__dict__))
@@ -53,7 +55,7 @@ if __name__ == "__main__":
   // These environment variables are required, before any import.
   // Do not remove them, as they set environment variables for the Shinkai Tools.
   Deno.env.set('SHINKAI_NODE_LOCATION', "http://localhost:9950");
-  Deno.env.set('BEARER', "debug");
+  Deno.env.set('BEARER', SHINKAI_BEARER);
   Deno.env.set('X_SHINKAI_TOOL_ID', "tool-id-debug");
   Deno.env.set('X_SHINKAI_APP_ID', "tool-app-debug");
   Deno.env.set('X_SHINKAI_LLM_PROVIDER', "${model.shinkaiName}");
@@ -63,11 +65,11 @@ if __name__ == "__main__":
   `,
       code_,
       `
-  
+
   // console.log('Running...')
   // console.log('Config: ${JSON.stringify(test.config)}')
   // console.log('Inputs: ${JSON.stringify(test.inputs)}')
-  
+
   try {
     const program_result = await run(${JSON.stringify(test.config)}, ${
         JSON.stringify(test.inputs)

@@ -18,7 +18,7 @@ export async function getAllToolsHeaders(): Promise<{
       tools: [],
     },
     headers: {
-      Authorization: "Bearer debug",
+      Authorization: `Bearer ${Deno.env.get("BEARER") ?? "debug"}`,
       "Content-Type": "application/json; charset=utf-8",
     },
   });
@@ -32,7 +32,7 @@ export async function getAllToolsHeaders(): Promise<{
       tools: availableTools.join(","),
     },
     headers: {
-      Authorization: "Bearer debug",
+      Authorization: `Bearer ${Deno.env.get("BEARER") ?? "debug"}`,
       "Content-Type": "application/json; charset=utf-8",
     },
   });
@@ -56,7 +56,7 @@ export async function getToolImplementationPrompt(
       tools: test.tools.join(","),
     },
     headers: {
-      Authorization: "Bearer debug",
+      Authorization: `Bearer ${Deno.env.get("BEARER") ?? "debug"}`,
       "Content-Type": "application/json; charset=utf-8",
     },
   });
