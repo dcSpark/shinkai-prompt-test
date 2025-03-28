@@ -1,5 +1,14 @@
 {
   "imports": {
     "@oak/oak": "jsr:@oak/oak@^17.1.4"
+  },
+  "workspace": [
+    "projects/code-generation-api",
+    "projects/code-generation",
+    "projects/shinkai-api"
+  ],
+  "tasks": {
+    "start:code-generation-api": "deno run -A --env-file projects/code-generation-api/src/main.ts",
+    "start:code-generation": "deno test -A --env-file projects/code-generation/src/mod.test.ts"
   }
 }

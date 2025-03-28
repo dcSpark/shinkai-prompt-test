@@ -1,14 +1,17 @@
 {
-    "deno.enable": true,
-    "deno.lint": true,
-    "deno.enablePaths": [
-        "./src",
-        "./mcp",
-        "./tests"
-    ],
-    "editor.formatOnSave": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit",
-        "source.organizeImports": "explicit"
-    }
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.enablePaths": [
+    "./src",
+    "./mcp",
+    "./tests",
+    "./projects/code-generation-api",
+    "./projects/code-generation",
+    "./projects/shinkai-api"
+  ],
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  }
 }

@@ -2,14 +2,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug local index",
+      "name": "Debug code-generation tests",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "deno",
-      "runtimeArgs": ["run", "--inspect-brk", "-A", "./src/local-index.ts"],
+      "runtimeArgs": [
+        "test",
+        "--inspect-brk",
+        "-A",
+        "./projects/code-generation/src/mod.test.ts"
+      ],
       "attachSimplePort": 9229,
-      "program": "${workspaceFolder}/src/local-index.ts"
+      "program": "${workspaceFolder}/projects/code-generation/src/mod.test.ts"
     },
     {
       "name": "Deno Backend (with frontend rebuild)",

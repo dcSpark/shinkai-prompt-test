@@ -1,0 +1,12 @@
+{
+  "name": "@scope/code-generation-api",
+  "tasks": {
+    "check": "deno check src/main.ts",
+    "lint": "deno lint src/main.ts",
+    "test": "deno test *.test.ts",
+    "start": "deno run -A --watch --env-file src/main.ts"
+  },
+  "exports": {
+    ".": "./src/main.ts"
+  }
+}

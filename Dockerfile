@@ -1,13 +1,14 @@
-FROM denoland/deno:2.2.3
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
+COPY . .
+RUN cd projects/shinkai-tool-generator && npm ci && npm run build
+COPY projects/shinkai-tool-generator/out ./public
+
+FROM denoland/deno:2.2.3 AS runtime
 # Copy required files and folders
-COPY prompts ./prompts
-COPY src ./src
-COPY deno.json .
-COPY deno.lock .
-COPY public ./public
+COPY . .
 
 # Expose the port
 EXPOSE 8080
@@ -32,4 +33,4 @@ ENV FIRECRAWL_API_KEY=${FIRECRAWL_API_KEY}
 ENV OPEN_AI_KEY=${OPEN_AI_KEY}
 
 # Set the entrypoint command
-CMD ["deno", "run", "-A", "src/service.ts"] 
+CMD ["deno", "run", "-A", "projects/code-generation-api/src/main.ts"] 

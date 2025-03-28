@@ -1,39 +1,90 @@
 # Shinkai Prompt Testing
 
-## Tests
+This repository contains a collection of projects for testing and developing the Shinkai prompt system, which is designed to generate code and tools using AI.
 
-#### Simple Test
-deno test --allow-all tests/service.test.ts
+## Projects Overview
 
-#### Internal Tools TS
-deno test --allow-all tests/service-tools-ts.test.ts
+### 1. Shinkai API (`projects/shinkai-api/`)
 
-#### Internal Tools PY
-deno test --allow-all tests/service-tools-py.test.ts
+The core API service that handles the main Shinkai functionality. This service processes prompts, generates code, and manages the overall workflow.
 
-## Install
-```
-git clone git@github.com:dcSpark/shinkai-prompt-test.git 
+### 2. Code Generation API (`projects/code-generation-api/`)
+
+A specialized API service focused on code generation tasks. It provides endpoints for generating code based on various requirements and specifications.
+
+### 3. Code Generation (`projects/code-generation/`)
+
+A standalone project that demonstrates and tests code generation capabilities. It includes examples and test cases for different code generation scenarios.
+
+### 4. Shinkai Tool Generator (`projects/shinkai-tool-generator/`)
+
+A utility project for generating Shinkai-compatible tools. It helps create new tools that can be integrated into the Shinkai ecosystem.
+
+## Setup and Installation
+
+1. Clone the repository:
+
+```bash
+git clone git@github.com:dcSpark/shinkai-prompt-test.git
 cd shinkai-prompt-test
+```
+
+2. Set up environment variables:
+
+```bash
 cp .env.example .env
 ```
-> setup BRAVE_API_KEY and other keys in .env
 
-## Launch service
+Edit the `.env` file to add your API keys and other configuration:
+
+- `BRAVE_API_KEY`: Your Brave API key
+- Other required keys as specified in the `.env.example` file
+
+## Running the Projects
+
+### Code Generation Api
+
+To run the main service:
+
+```bash
+deno task start:code-generation-api
 ```
-deno --watch -A src/service.ts
+
+### Code Generation (run the lib throught a test)
+
+```bash
+deno task start:code-generation
 ```
 
-If you prefer to have a debugger run
+### Other commands
+
+```bash
+deno task -r check
+deno task -r lint
+deno task -r test
 ```
-run --inspect-brk -A ./src/service.ts
+
+## Testing projects manually
+
+Having code-generation-api running:
+
+Call endpoints directly using curl
+
+```bash
+curl localhost:8080/generate?language=typescript&prompt=hello_world
 ```
 
-> TEST curl localhost:8080/generate\?language=typescript\&prompt=hello_world                                                              
+Use the testing website (shinkai-tool-generator)
 
-> Open test.html to use the frontend
+```bash
+cd projects/shinkai-tool-generator
+npm ci
+npm run dev
+```
 
-## Pipeline Flow Diagram
+## Pipeline Flow
+
+The system follows a structured pipeline flow as shown in the diagram below:
 
 ```mermaid
 graph TD
@@ -74,10 +125,10 @@ graph TD
     class Init,ProcReq,ProcUser,ProcLib,ProcInt,GenCode,CheckCode,FixCode,GenMeta,LogComp process;
 ```
 
-The diagram above shows the main pipeline flow of the Shinkai prompt testing system. Each major step in the pipeline utilizes the `retryUntilSuccess` mechanism (shown in the subgraph) to ensure robust execution. The retry mechanism will attempt the operation up to 3 times before failing.
+The pipeline includes several key components:
 
-Key components:
-- Main Pipeline Flow: Shows the sequential processing steps from initialization to completion
-- RetryUntilSuccess: Demonstrates the self-looping retry mechanism used by most pipeline steps
-- Warning Handling: Illustrates the code fix loop that occurs when warnings are detected
+- **Main Pipeline Flow**: Sequential processing from initialization to completion
+- **RetryUntilSuccess**: Self-looping retry mechanism (up to 3 attempts) for robust execution
+- **Warning Handling**: Code fix loop for handling detected warnings
+- **Integration Points**: Retry mechanism utilization throughout the main flow
 - Integration Points: Dotted lines show where the retry mechanism is utilized in the main flow
